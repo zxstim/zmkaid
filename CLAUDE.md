@@ -39,6 +39,9 @@ The development certificate renews yearly, which may need one more grant.
 
 - `zmkaid.xcodeproj` was written by hand and uses a **file-system synchronized group**: any file under `zmkaid/`
   is compiled automatically. Don't add file references to `project.pbxproj`.
+- App icon: `zmkaid/Assets.xcassets/AppIcon.appiconset` (10 mac sizes, filenames fixed in Contents.json),
+  `ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon`. `make icon ICON=…png` fills it with sips. Until the PNGs exist,
+  the build only warns that the files are missing.
 - Shared scheme `zmkaid` in `xcshareddata`. Bundle id `com.zxstim.zmkaid`, macOS 14+, `LSUIElement` (no Dock
   icon), App Sandbox off (a sandbox would block the event tap), hardened runtime on.
 - Swift 5 language mode with `SWIFT_STRICT_CONCURRENCY = minimal`. Mark AppKit/state types `@MainActor`

@@ -32,6 +32,7 @@ full-screen space and never takes focus. Drag it wherever you like, or lock it s
 make run       # build (Release) and launch from ./build
 make install   # copy to /Applications and launch — use this for everyday use
 make preview   # render the overlay to ./preview/*.png without opening a window
+make icon ICON=icon.png  # generate the app icon sizes from one PNG
 make clean
 ```
 
@@ -39,6 +40,19 @@ Or open `zmkaid.xcodeproj` in Xcode and press ⌘R. The `#Preview`s at the botto
 `zmkaid/Overlay/KeyboardView.swift` show the overlay in Xcode's canvas.
 
 To start it at login: System Settings → General → Login Items → add `/Applications/zmkaid.app`.
+
+### App icon
+
+Put a square PNG (1024 × 1024 is best) anywhere and run:
+
+```sh
+make icon ICON=path/to/icon.png   # writes all 10 sizes into zmkaid/Assets.xcassets/AppIcon.appiconset
+make install
+```
+
+Or drag PNGs into the AppIcon slots in Xcode. macOS 15 doesn't round the corners for you, so the PNG should
+already be the rounded-square shape with a transparent margin. If Finder still shows the old icon, run
+`killall Finder`.
 
 ### Permission
 
